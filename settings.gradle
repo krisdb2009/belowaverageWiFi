@@ -1,0 +1,2 @@
+rootProject.name = "below average WiFi"
+include ':app'
