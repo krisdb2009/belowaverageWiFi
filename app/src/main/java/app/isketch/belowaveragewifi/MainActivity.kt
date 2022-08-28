@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             var wList = ArrayList<WifiNetworkSuggestion>()
             wList.add(wsugg)
             WiMan.addNetworkSuggestions(wList)
-            startActivity(Intent(android.provider.Settings.ACTION_WIFI_SETTINGS))
+            //startActivity(Intent(android.provider.Settings.ACTION_WIFI_SETTINGS))
         }
         userText.requestFocus()
     }
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         var cf = CertificateFactory.getInstance("X.509")
         var cert = cf.generateCertificate(resources.openRawResource(R.raw.rootca)) as X509Certificate
         WEntConfig.eapMethod = WifiEnterpriseConfig.Eap.PEAP
-        WEntConfig.domainSuffixMatch = "wifi.belowaverage.org"
+        WEntConfig.domainSuffixMatch = "wifi.ad.belowaverage.org"
         WEntConfig.caCertificate = cert
     }
 }
