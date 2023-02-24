@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         var userPass = findViewById<EditText>(R.id.text_password)
         var button = findViewById<Button>(R.id.button_join)
         button.setOnClickListener {
-            progBar.visibility = View.VISIBLE
-            button.text = "Please wait..."
+            //progBar.visibility = View.VISIBLE
+            button.text = "WiFi should join shortly..."
             WiMan.removeNetworkSuggestions(WiMan.networkSuggestions.toList())
             WEntConfig.identity = userText.text.toString()
             WEntConfig.password = userPass.text.toString()
@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         }
         userText.requestFocus()
     }
-
     override fun onResume() {
         var progBar = findViewById<ProgressBar>(R.id.prog_bar)
         var button = findViewById<Button>(R.id.button_join)
