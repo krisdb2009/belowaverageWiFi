@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         var button = findViewById<Button>(R.id.button_join)
         button.setOnClickListener {
             progBar.visibility = View.VISIBLE
-            button.text = "Please wait..."
+            button.text = "Please wait, WiFi should join shortly..."
             WiMan.removeNetworkSuggestions(WiMan.networkSuggestions.toList())
             WEntConfig.identity = userText.text.toString()
             WEntConfig.password = userPass.text.toString()
