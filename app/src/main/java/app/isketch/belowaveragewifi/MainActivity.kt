@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             WiMan.removeNetworkSuggestions(WiMan.networkSuggestions.toList())
             WEntConfig.identity = userText.text.toString()
             WEntConfig.password = userPass.text.toString()
-            var wsugg = WifiNetworkSuggestion.Builder().setSsid("belowaverage").setWpa2EnterpriseConfig(WEntConfig).build()
+            var wsugg = WifiNetworkSuggestion.Builder().setSsid("belowaverage").setIsHiddenSsid(true).setWpa2EnterpriseConfig(WEntConfig).build()
             var wList = ArrayList<WifiNetworkSuggestion>()
             wList.add(wsugg)
             WiMan.addNetworkSuggestions(wList)
