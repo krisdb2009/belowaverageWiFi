@@ -33,15 +33,22 @@ class MainActivity : AppCompatActivity() {
         var button = findViewById<Button>(R.id.button_join)
         button.setOnClickListener {
             //progBar.visibility = View.VISIBLE
-            button.text = "WiFi should join shortly..."
+            //button.text = "WiFi should join shortly, if not, try another password."
             WiMan.removeNetworkSuggestions(WiMan.networkSuggestions.toList())
             WEntConfig.identity = userText.text.toString()
             WEntConfig.password = userPass.text.toString()
-            var wsugg = WifiNetworkSuggestion.Builder().setSsid("belowaverage").setIsHiddenSsid(true).setWpa2EnterpriseConfig(WEntConfig).build()
+            var wsugg = WifiNetworkSuggestion.Builder().
+            setSsid("belowaverage").
+            setIsHiddenSsid(true).
+            setIsAppInteractionRequired(false).
+            setIsUserInteractionRequired(false).
+            setIsInitialAutojoinEnabled(true).
+            setWpa2EnterpriseConfig(WEntConfig).
+            build()
             var wList = ArrayList<WifiNetworkSuggestion>()
             wList.add(wsugg)
             WiMan.addNetworkSuggestions(wList)
-            //startActivity(Intent(android.provider.Settings.ACTION_WIFI_SETTINGS))
+            startActivity(Intent(android.provider.Settings.ACTION_WIFI_SETTINGS))
         }
         userText.requestFocus()
     }
@@ -56,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         var cf = CertificateFactory.getInstance("X.509")
         var cert = cf.generateCertificate(resources.openRawResource(R.raw.rootca)) as X509Certificate
         WEntConfig.eapMethod = WifiEnterpriseConfig.Eap.PEAP
+        WEntConfig.phase2Method = WifiEnterpriseConfig.Phase2.MSCHAPV2
         WEntConfig.domainSuffixMatch = "wifi.ad.belowaverage.org"
         WEntConfig.caCertificate = cert
     }

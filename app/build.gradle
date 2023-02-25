@@ -4,8 +4,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    compileSdk 31
+    buildToolsVersion '33.0.2'
 
     defaultConfig {
         applicationId "app.isketch.belowaveragewifi"
@@ -24,12 +24,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'app.isketch.belowaveragewifi'
 }
 
 dependencies {
